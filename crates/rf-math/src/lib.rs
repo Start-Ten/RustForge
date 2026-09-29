@@ -535,6 +535,21 @@ impl Mat4 {
         Vec3::new(self.m[12], self.m[13], self.m[14])
     }
 
+    /// 绕 Y 轴旋转（列主序）。
+    pub fn from_rotation_y(rad: f32) -> Self {
+        Self::from_axis_angle(Vec3::new(0.0, 1.0, 0.0), rad)
+    }
+
+    /// 绕 X 轴旋转。
+    pub fn from_rotation_x(rad: f32) -> Self {
+        Self::from_axis_angle(Vec3::new(1.0, 0.0, 0.0), rad)
+    }
+
+    /// 绕 Z 轴旋转。
+    pub fn from_rotation_z(rad: f32) -> Self {
+        Self::from_axis_angle(Vec3::new(0.0, 0.0, 1.0), rad)
+    }
+
     /// 右乘对角缩放（M · S，列 c 乘 s_c；用于 T·R·S 复合）。
     pub fn apply_scale(self, s: Vec3) -> Self {
         let mut m = self.m;

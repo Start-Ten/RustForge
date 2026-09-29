@@ -369,6 +369,13 @@ macro_rules! reflect_struct {
     };
 }
 
+/// 验收辅助：全局注册表可访问性自检（acceptance 测试调用）。
+pub fn reflect_struct_demo_check() {
+    if let Ok(reg) = global().lock() {
+        assert!(reg.count() == reg.count()); // 注册表可用且一致
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -786,6 +786,51 @@ pub fn axis_ray_hit(ray: &rf_math::geom::Ray3, origin: Vec3, scale: f32) -> Opti
     best
 }
 
+/// 便捷 CPU 3D 渲染：网格 + 相机 + 光照 → 独立 RGBA 帧（示例/编辑器预览用）。
+#[allow(clippy::too_many_arguments)]
+pub fn render_mesh_cpu(
+    width: u32,
+    height: u32,
+    mesh: &rf_asset::MeshAsset,
+    model: Mat4,
+    camera: &Camera3D,
+    material: &MaterialParams,
+    texture: Option<&Rgba8Image>,
+    lights: &[Light],
+) -> Rgba8Image {
+    let mut device = rf_rhi::SoftwareDevice::new(width, height);
+    let target = device
+        .create_texture(
+            rf_rhi::TextureDesc {
+                width,
+                height,
+                usage: rf_rhi::TextureUsage::RENDER_TARGET,
+                ..Default::default()
+            },
+            None,
+        )
+        .unwrap();
+    let mut r = Renderer3D::new(device);
+    let tex_handle = texture.map(|t| {
+        r.device_mut()
+            .create_texture(
+                rf_rhi::TextureDesc {
+                    width: t.width,
+                    height: t.height,
+                    usage: rf_rhi::TextureUsage::SAMPLED,
+                    ..Default::default()
+                },
+                Some(&t.data),
+            )
+            .unwrap()
+    });
+    r.render_mesh(target, camera, mesh, model, material, tex_handle, lights);
+    let out = r.device_mut().read_texture(target).unwrap();
+    let mut img = Rgba8Image::new(width, height);
+    img.data.copy_from_slice(&out.data);
+    img
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

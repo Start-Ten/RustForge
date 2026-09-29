@@ -369,6 +369,14 @@ rustforge → 全部
 - 废弃流程：`#[deprecated]` + CHANGELOG 记录 → 保留一个次要版本 → 移除并升 minor。
 - 公开 API 之外一律私有；`pub use` 仅发生在伞 crate 与 crate 根。
 
+## 26.5 变更提案记录（实现期）
+
+| CP | 接口 | 变更 | 原因 | 兼容性 |
+|---|---|---|---|---|
+| CP-001 | IF-029 Frustum | 新增私有字段 view_projection/perspective（公开字段不变） | 背面点经 6 平面测试假阳性（透视除法 w<0 陷阱） | 无公开 API 影响 |
+| CP-002 | IF-150 CommandList | 新增 `as_any(&mut self)`（返回 &mut dyn Any） | Software 后端 submit 需下转取回录制命令 | 新增必需方法；实现方在仓内同步 |
+| CP-003 | IF-303 Profiler::scope | 改为自由函数 `scope(name)`（线程本地） | &mut self 守卫无法嵌套作用域 | 语义等价，嵌套支持 |
+
 ## 27. 接口清单索引（统计）
 
 条目总数：IF-001 ~ IF-334，共 334 内 230+ 条（编号有保留段）。后续新增以 IF-4xx 起编号并附变更提案。
