@@ -304,6 +304,35 @@ pub fn ray_aabb2(ray: &Ray2, bb: &AABB2) -> Option<(f32, f32)> {
     Some((t_near, t_far))
 }
 
+/// 射线 vs AABB3，返回 (t_near, t_far)；不相交返回 None。
+pub fn ray_aabb3(ray: &Ray3, bb: &AABB3) -> Option<(f32, f32)> {
+    let mut t_near = f32::MIN;
+    let mut t_far = f32::MAX;
+    for (o, d, mn, mx) in [
+        (ray.origin.x, ray.dir.x, bb.min.x, bb.max.x),
+        (ray.origin.y, ray.dir.y, bb.min.y, bb.max.y),
+        (ray.origin.z, ray.dir.z, bb.min.z, bb.max.z),
+    ] {
+        if d.abs() < f32::EPSILON {
+            if o < mn || o > mx {
+                return None;
+            }
+        } else {
+            let mut t1 = (mn - o) / d;
+            let mut t2 = (mx - o) / d;
+            if t1 > t2 {
+                std::mem::swap(&mut t1, &mut t2);
+            }
+            t_near = t_near.max(t1);
+            t_far = t_far.min(t2);
+            if t_near > t_far {
+                return None;
+            }
+        }
+    }
+    Some((t_near, t_far))
+}
+
 /// 射线 vs 球，返回最近正 t。
 pub fn ray_sphere(ray: &Ray3, s: &Sphere) -> Option<f32> {
     let oc = ray.origin - s.center;
