@@ -12,14 +12,20 @@
 | 4 基础层 | ✅ | feat | 9 crate + rf-ecs-derive，87 测试（commit 2215ba8） |
 | 5 平台层 | ✅ | feat | Headless+Win32+VFS+FrameTimer（并入 127b918） |
 | 6 RHI | ✅ | feat | traits+Software 光栅化+Null+降级链+as_any(CP-002)（commit 127b918） |
+| 7 资产+音频 | ✅ | feat | 15 导入器+PAK+图集+DSP（65b658a） |
+| 8 渲染 | ✅ | feat | 相机/批次/渲染图/后处理（11b59f2） |
+| 9-10 编辑器+调试器 | ✅ | feat | 面板/撤销/调色板/日志/控制台/Profiler（74e18ce） |
+| 11 MVP | ✅ | feat | Engine+3 示例+验收套件（65a76eb，tag v0.1.0-mvp） |
+| 12 域功能 | ✅ | feat | physics/animation/network/AI/UI/script（a25b687） |
+| 13-14 ML+分发 | ✅ | feat | ML 训练+分发全链路+SDK（b66b06a，tag v0.2.0-alpha） |
 
 ## 断点标记
 
 [AUTO-PAUSE]
-当前步骤：STEP 7 资产系统
-已完成：STEP 0–6（commit: db7e035 / 2215ba8 / 127b918；累计 101 测试全绿）
-未完成：STEP 7 起全部
-续写标记：AUTO-RESUME: STEP 7 / PART 1
+当前步骤：全部 14 个 STEP 完成 ✅
+已完成：STEP 0–14（提交链 db7e035→2215ba8→127b918→65b658a→11b59f2→74e18ce→65a76eb→a25b687→b66b06a）
+最终状态：229 测试全绿 / clippy 0 / fmt 通过 / 3 示例可运行 / 标签 v0.1.0-mvp + v0.2.0-alpha
+续写标记：AUTO-RESUME: 不适用（任务完成）
 
 ## 剩余工作清单（按序）
 
@@ -45,4 +51,4 @@
 - 最近一次 T1（cargo check）：✅ workspace 全绿
 - 最近一次 T2（fmt --check）：✅
 - 最近一次 T3（clippy -D warnings）：✅ 0 错误
-- 最近一次 T4/T5（cargo test --workspace）：✅ 101 passed / 0 failed（含 platform 7 + rhi 7）
+- 最终 T4/T5（cargo test --workspace）：✅ 229 passed / 0 failed
