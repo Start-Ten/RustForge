@@ -49,7 +49,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: rustsec/audit-check@v2
-        with: { token: ${{ secrets.GITHUB_TOKEN }} }
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   cross-linux-arm:
     name: cross-compile linux/arm64
