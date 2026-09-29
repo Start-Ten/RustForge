@@ -20,7 +20,9 @@ fn texture_imported(image: Rgba8Image, ctx: &mut ImportContext) -> Result<Import
 /// QOI 解码（规格 O1 P0）。
 pub struct QoiImporter;
 
-const QOI_MAGIC: [u8; 4] = [b'q', b'o', b'i', b'f'];
+const QOI_MAGIC: [u8; 4] = *b"qoif";
+/// PNG 签名（89 50 4E 47 0D 0A 1A 0A）。
+const PNG_SIG: [u8; 8] = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
 
 impl AssetImporter for QoiImporter {
     fn name(&self) -> &'static str {
@@ -136,7 +138,7 @@ impl AssetImporter for PngImporter {
         &["png"]
     }
     fn import(&self, ctx: &mut ImportContext, bytes: &[u8]) -> Result<ImportedAsset> {
-        if bytes.len() < 8 || bytes[0..8] != [0x89, b'P', b'N', b'G', 0x0D, 0x0A, 0x1A, 0x0A] {
+        if bytes.len() < 8 || bytes[0..8] != PNG_SIG {
             return Err(EngineError::InvalidData("png: bad signature".into()));
         }
         let mut pos = 8usize;
