@@ -102,7 +102,7 @@ fn bmp_24bit_roundtrip() {
     let importer = importers::builtin_importers().into_iter().find(|i| i.name() == "bmp").unwrap();
     // 2×2 24bpp BMP（bottom-up）
     let stride: u32 = 8; // ((2*3+3)/4)*4
-    let mut bmp: Vec<u8> = vec![b'B', b'M'];
+    let mut bmp: Vec<u8> = b"BM".to_vec();
     bmp.extend_from_slice(&(54u32 + stride * 2).to_le_bytes());
     bmp.extend_from_slice(&[0; 4]);
     bmp.extend_from_slice(&54u32.to_le_bytes());

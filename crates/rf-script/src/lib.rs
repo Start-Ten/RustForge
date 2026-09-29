@@ -977,7 +977,7 @@ impl AbilitySystem {
     /// 推进：冷却递减 + 效果到期/周期。
     pub fn tick(&mut self, dt: f32) -> Vec<String> {
         let mut events = Vec::new();
-        for (_, cd) in self.cooldowns.iter_mut() {
+        for cd in self.cooldowns.values_mut() {
             *cd = (*cd - dt).max(0.0);
         }
         let mut still: Vec<(GameEffect, f32, f32)> = Vec::new();
