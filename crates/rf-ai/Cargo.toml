@@ -1,0 +1,13 @@
+[package]
+name = "rf-ai"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge AI：行为树/黑板/A*/流场/感知/群体"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }
+rf-ecs = { workspace = true }

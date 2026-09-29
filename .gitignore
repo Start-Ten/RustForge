@@ -1,0 +1,28 @@
+# RustForge .gitignore — 见 docs/step0-constraints.md §3
+/target
+**/target
+Cargo.lock.bak
+*.pdb
+*.exe
+*.dll
+*.so
+*.dylib
+*.apk
+*.aab
+# IDE
+.idea/
+.vscode/
+*.iml
+# 临时与密钥
+tmp/
+*.tmp
+*.log
+*.local.toml
+secrets/
+*.keystore
+*.jks
+*.pem
+*.p12
+# OS
+Thumbs.db
+.DS_Store

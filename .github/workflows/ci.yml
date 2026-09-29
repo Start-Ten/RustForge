@@ -1,0 +1,75 @@
+name: ci
+on:
+  push: { branches: [main, develop] }
+  pull_request: { branches: [main, develop] }
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: "-D warnings"
+
+jobs:
+  fmt:
+    name: format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with: { components: rustfmt }
+      - run: cargo fmt --all --check
+
+  clippy:
+    name: clippy (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix: { os: [ubuntu-latest, windows-latest] }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with: { components: clippy }
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+
+  build-test:
+    name: build+test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix: { os: [ubuntu-latest, windows-latest] }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build --workspace --all-targets
+      - run: cargo test --workspace
+
+  audit:
+    name: cargo-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: rustsec/audit-check@v2
+        with: { token: ${{ secrets.GITHUB_TOKEN }} }
+
+  cross-linux-arm:
+    name: cross-compile linux/arm64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with: { targets: aarch64-unknown-linux-gnu }
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo check --workspace --target aarch64-unknown-linux-gnu
+        env:
+          # Win32 feature 仅在 windows 目标启用；ARM Linux 走 Headless 平台
+          RUSTFLAGS: "-D warnings"
+
+  android-check:
+    name: android cross-check (optional)
+    runs-on: ubuntu-latest
+    continue-on-error: true # 需要 NDK；无 NDK 环境允许跳过，主干由 Linux ARM 交叉覆盖
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with: { targets: aarch64-linux-android }
+      - run: cargo check -p rf-core -p rf-math -p rf-ecs --target aarch64-linux-android

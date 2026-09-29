@@ -1,0 +1,13 @@
+[package]
+name = "rf-script"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 脚本：字节码 VM/可视化图/GAS-lite/调试钩子"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-ecs = { workspace = true }
+rf-reflection = { workspace = true }

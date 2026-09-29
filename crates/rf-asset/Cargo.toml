@@ -1,0 +1,18 @@
+[package]
+name = "rf-asset"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 资产：导入器/异步/LRU/依赖图/热重载/PAK/图集"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }
+rf-reflection = { workspace = true }
+rf-task = { workspace = true }
+rf-serialization = { workspace = true }
+rf-audio = { workspace = true }
+serde_json = "1"
+flate2 = "1"

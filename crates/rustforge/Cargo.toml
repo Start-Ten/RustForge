@@ -1,0 +1,38 @@
+[package]
+name = "rustforge"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge RustForge 伞 crate：prelude + Engine 组装 + 示例"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }
+rf-memory = { workspace = true }
+rf-event = { workspace = true }
+rf-task = { workspace = true }
+rf-ecs = { workspace = true }
+rf-reflection = { workspace = true }
+rf-serialization = { workspace = true }
+rf-plugin = { workspace = true }
+rf-audio = { workspace = true }
+rf-platform = { workspace = true }
+rf-rhi = { workspace = true }
+rf-asset = { workspace = true }
+rf-render = { workspace = true }
+rf-physics = { workspace = true }
+rf-animation = { workspace = true }
+rf-network = { workspace = true }
+rf-ai = { workspace = true }
+rf-ui = { workspace = true }
+rf-script = { workspace = true }
+rf-ml = { workspace = true }
+rf-debugger = { workspace = true }
+rf-editor = { workspace = true }
+rf-distribute = { workspace = true }
+
+[features]
+default = ["win32"]
+win32 = ["rf-platform/win32"]

@@ -1,0 +1,13 @@
+[package]
+name = "rf-animation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 动画：骨骼/蒙皮/状态机/IK/时间轴(Sequencer)"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }
+rf-ecs = { workspace = true }

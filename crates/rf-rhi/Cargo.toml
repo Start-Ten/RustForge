@@ -1,0 +1,12 @@
+[package]
+name = "rf-rhi"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge RHI：设备/纹理/缓冲/管线抽象 + Software/Null 后端"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }

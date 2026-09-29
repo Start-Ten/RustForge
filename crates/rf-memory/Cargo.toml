@@ -1,0 +1,11 @@
+[package]
+name = "rf-memory"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 分配器：BumpArena/Pool/Stack/Buddy/追踪与泄漏检测"
+
+[dependencies]
+rf-core = { workspace = true }

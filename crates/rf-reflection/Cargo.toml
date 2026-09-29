@@ -1,0 +1,12 @@
+[package]
+name = "rf-reflection"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 反射：TypeRegistry/字段元数据/属性读写宏"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }

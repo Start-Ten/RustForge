@@ -1,0 +1,14 @@
+#!/bin/sh
+# Conventional Commits 校验
+msg_file="$1"
+head=$(head -n1 "$msg_file")
+pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z0-9_-]+\))?!?: .+'
+if ! echo "$head" | grep -Eq "$pattern"; then
+  echo "[commit-msg] 非法提交信息: $head"
+  echo "要求: <type>(<scope>)?: <subject>  例如 feat(rf-ecs): add archetype query cache"
+  exit 1
+fi
+if [ "$(printf %s "$head" | wc -c)" -gt 100 ]; then
+  echo "[commit-msg] 标题超过 100 字符"
+  exit 1
+fi

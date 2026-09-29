@@ -1,0 +1,12 @@
+[package]
+name = "rf-ml"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 机器学习(实验)：张量/MLP/训练推理后端"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }

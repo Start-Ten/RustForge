@@ -1,0 +1,8 @@
+#!/bin/sh
+# RustForge pre-push hook: 完整测试与构建
+set -e
+echo "[pre-push] cargo build --workspace --all-targets"
+cargo build --workspace --all-targets
+echo "[pre-push] cargo test --workspace"
+cargo test --workspace
+echo "[pre-push] OK"

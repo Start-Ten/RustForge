@@ -1,0 +1,20 @@
+[package]
+name = "rf-editor"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 编辑器：面板/撤销重做/命令面板/主题/2D-3D 模式"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }
+rf-ecs = { workspace = true }
+rf-asset = { workspace = true }
+rf-render = { workspace = true }
+rf-ui = { workspace = true }
+rf-debugger = { workspace = true }
+rf-platform = { workspace = true }
+rf-rhi = { workspace = true }
+rf-reflection = { workspace = true }

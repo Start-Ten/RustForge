@@ -1,0 +1,15 @@
+[package]
+name = "rf-render"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 渲染：渲染图/相机/2D 批次/3D 光栅/后处理/上采样"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }
+rf-ecs = { workspace = true }
+rf-rhi = { workspace = true }
+rf-asset = { workspace = true }

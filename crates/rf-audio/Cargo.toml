@@ -1,0 +1,12 @@
+[package]
+name = "rf-audio"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 音频：DSP 节点图/混音/空间化/WAV 编码"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }

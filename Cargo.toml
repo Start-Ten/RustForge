@@ -1,0 +1,79 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/rf-core",
+    "crates/rf-math",
+    "crates/rf-memory",
+    "crates/rf-event",
+    "crates/rf-task",
+    "crates/rf-ecs",
+    "crates/rf-reflection",
+    "crates/rf-serialization",
+    "crates/rf-plugin",
+    "crates/rf-audio",
+    "crates/rf-platform",
+    "crates/rf-rhi",
+    "crates/rf-asset",
+    "crates/rf-render",
+    "crates/rf-physics",
+    "crates/rf-animation",
+    "crates/rf-network",
+    "crates/rf-ai",
+    "crates/rf-ui",
+    "crates/rf-script",
+    "crates/rf-ml",
+    "crates/rf-debugger",
+    "crates/rf-editor",
+    "crates/rf-distribute",
+    "crates/rustforge",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://example.invalid/rustforge"
+rust-version = "1.85"
+
+[workspace.dependencies]
+rf-core = { path = "crates/rf-core" }
+rf-math = { path = "crates/rf-math" }
+rf-memory = { path = "crates/rf-memory" }
+rf-event = { path = "crates/rf-event" }
+rf-task = { path = "crates/rf-task" }
+rf-ecs = { path = "crates/rf-ecs" }
+rf-reflection = { path = "crates/rf-reflection" }
+rf-serialization = { path = "crates/rf-serialization" }
+rf-plugin = { path = "crates/rf-plugin" }
+rf-audio = { path = "crates/rf-audio" }
+rf-platform = { path = "crates/rf-platform" }
+rf-rhi = { path = "crates/rf-rhi" }
+rf-asset = { path = "crates/rf-asset" }
+rf-render = { path = "crates/rf-render" }
+rf-physics = { path = "crates/rf-physics" }
+rf-animation = { path = "crates/rf-animation" }
+rf-network = { path = "crates/rf-network" }
+rf-ai = { path = "crates/rf-ai" }
+rf-ui = { path = "crates/rf-ui" }
+rf-script = { path = "crates/rf-script" }
+rf-ml = { path = "crates/rf-ml" }
+rf-debugger = { path = "crates/rf-debugger" }
+rf-editor = { path = "crates/rf-editor" }
+rf-distribute = { path = "crates/rf-distribute" }
+thiserror = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+flate2 = "1"
+
+[profile.release]
+debug = "line-tables-only"
+lto = "thin"
+
+[profile.shipping]
+inherits = "release"
+opt-level = 3
+lto = "fat"
+strip = "symbols"
+debug = false
+codegen-units = 1
+panic = "abort"

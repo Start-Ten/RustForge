@@ -1,0 +1,21 @@
+[package]
+name = "rf-platform"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 平台抽象：窗口/输入/文件/时间（Headless+Win32）"
+
+[dependencies]
+rf-core = { workspace = true }
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = [
+  "Win32_Foundation", "Win32_UI_WindowsAndMessaging",
+  "Win32_Graphics_Gdi", "Win32_System_LibraryLoader", "Win32_System_Performance",
+] }
+
+[features]
+default = []
+win32 = []

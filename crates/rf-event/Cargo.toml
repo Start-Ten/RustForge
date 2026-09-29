@@ -1,0 +1,11 @@
+[package]
+name = "rf-event"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 类型安全事件总线：优先级/一次性/延迟/限流/输入映射"
+
+[dependencies]
+rf-core = { workspace = true }

@@ -1,0 +1,12 @@
+[package]
+name = "rf-ui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge UI：控件树/布局/9-Slice/绑定/虚拟化显示列表"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-math = { workspace = true }

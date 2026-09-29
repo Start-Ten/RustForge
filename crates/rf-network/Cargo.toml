@@ -1,0 +1,12 @@
+[package]
+name = "rf-network"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 网络：传输/复制/RPC/预测回滚"
+
+[dependencies]
+rf-core = { workspace = true }
+rf-serialization = { workspace = true }

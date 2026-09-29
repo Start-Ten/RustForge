@@ -1,0 +1,10 @@
+#!/bin/sh
+# RustForge pre-commit hook: fmt + clippy + 快速单测
+set -e
+echo "[pre-commit] cargo fmt --check"
+cargo fmt --all --check
+echo "[pre-commit] cargo clippy"
+cargo clippy --workspace --all-targets -- -D warnings
+echo "[pre-commit] cargo test --lib (fast subset)"
+cargo test --workspace --lib
+echo "[pre-commit] OK"

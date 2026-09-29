@@ -1,0 +1,11 @@
+[package]
+name = "rf-math"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 2D/3D 数学库：向量/矩阵/四元子/几何/插值/曲线/噪声"
+
+[dependencies]
+rf-core = { workspace = true }

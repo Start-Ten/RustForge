@@ -1,0 +1,11 @@
+[package]
+name = "rf-task"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge 任务系统：工作窃取线程池/优先级/依赖 DAG/取消"
+
+[dependencies]
+rf-core = { workspace = true }
