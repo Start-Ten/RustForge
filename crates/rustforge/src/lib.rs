@@ -1,8 +1,1 @@
-//! RustForge RustForge 伞 crate：prelude + Engine 组装 + 示例
-//!
-//! 接口契约见 docs/step2.5-interface-freeze.md。公开 API 与冻结清单严格一致。
-#![forbid(unsafe_op_in_unsafe_fn)]
-
-pub fn crate_id() -> &'static str {
-    "rustforge"
-}
+//! 实现进行中（AUTO-RUN STEP 4+）。

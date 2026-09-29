@@ -1,0 +1,11 @@
+[package]
+name = "rf-ecs-derive"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+description = "RustForge ECS derive 宏（零依赖手写解析）"
+
+[lib]
+proc-macro = true

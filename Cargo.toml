@@ -7,6 +7,7 @@ members = [
     "crates/rf-event",
     "crates/rf-task",
     "crates/rf-ecs",
+    "crates/rf-ecs-derive",
     "crates/rf-reflection",
     "crates/rf-serialization",
     "crates/rf-plugin",
@@ -42,6 +43,7 @@ rf-memory = { path = "crates/rf-memory" }
 rf-event = { path = "crates/rf-event" }
 rf-task = { path = "crates/rf-task" }
 rf-ecs = { path = "crates/rf-ecs" }
+rf-ecs-derive = { path = "crates/rf-ecs-derive" }
 rf-reflection = { path = "crates/rf-reflection" }
 rf-serialization = { path = "crates/rf-serialization" }
 rf-plugin = { path = "crates/rf-plugin" }

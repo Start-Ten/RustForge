@@ -8,6 +8,7 @@ repository.workspace = true
 description = "RustForge Archetype ECS：World/Query/调度器/事件/命令/层级"
 
 [dependencies]
+rf-ecs-derive = { workspace = true }
 rf-core = { workspace = true }
 rf-math = { workspace = true }
 rf-task = { workspace = true }

@@ -8,15 +8,16 @@
 | 1 功能矩阵 | ✅ | chore(docs) | docs/step1-feature-matrix.md |
 | 2 架构 | ✅ | chore(docs) | docs/step2-architecture.md |
 | 2.5 接口冻结 | ✅ | chore(docs) | docs/step2.5-interface-freeze.md（IF-001~IF-333） |
-| 3 工程脚手架 | 🔄 进行中 | — | workspace/CI/hooks/git init |
+| 3 工程脚手架 | ✅ | chore | workspace/CI/hooks/git init，commit db7e035 |
+| 4 基础层 | ✅ | feat | core/math/memory/event/task/ecs(+derive)/reflection/serialization/plugin：87 测试全绿，clippy 0 |
 
 ## 断点标记
 
 [AUTO-PAUSE]
-当前步骤：STEP 3
-已完成：STEP 0–2.5 文档；根配置（Cargo.toml/.gitignore/.gitattributes/rustfmt/CI/hooks/社区文件）
-未完成：25 个 crate 脚手架 + git init + STEP 4 起全部实现
-续写标记：AUTO-RESUME: STEP 3 / PART 2
+当前步骤：STEP 4 完成，进入 STEP 5
+已完成：STEP 0–4（基础层 9 crate + rf-ecs-derive）
+未完成：STEP 5 平台层 起 后续全部
+续写标记：AUTO-RESUME: STEP 5 / PART 1
 
 ## 关键决策存档
 
@@ -27,5 +28,7 @@
 
 ## 测试状态
 
-- 最近一次 T1（cargo check）：未运行（脚手架生成中）
-- 最近一次 T4/T5（cargo test）：未运行
+- 最近一次 T1（cargo check）：✅ workspace 全绿
+- 最近一次 T2（fmt --check）：✅
+- 最近一次 T3（clippy -D warnings）：✅ 0 错误
+- 最近一次 T4/T5（cargo test --workspace）：✅ 87 passed / 0 failed

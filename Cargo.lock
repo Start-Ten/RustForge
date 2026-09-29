@@ -143,9 +143,14 @@ name = "rf-ecs"
 version = "0.1.0"
 dependencies = [
  "rf-core",
+ "rf-ecs-derive",
  "rf-math",
  "rf-task",
 ]
+
+[[package]]
+name = "rf-ecs-derive"
+version = "0.1.0"
 
 [[package]]
 name = "rf-editor"
