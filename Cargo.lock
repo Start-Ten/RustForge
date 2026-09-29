@@ -135,6 +135,7 @@ dependencies = [
  "flate2",
  "rf-asset",
  "rf-core",
+ "rf-debugger",
  "serde_json",
 ]
 

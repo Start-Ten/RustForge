@@ -10,5 +10,6 @@ description = "RustForge 分发：构建/打包/签名/商店/更新/成就/云�
 [dependencies]
 rf-core = { workspace = true }
 rf-asset = { workspace = true }
+rf-debugger = { workspace = true }
 flate2 = "1"
 serde_json = "1"
